@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Escalas de Temperatura</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+</head>
+<body>
+    <main>
+        <h1 id="titulo">Conversor C° &hArr; F°</h1>
+
+        <div id="seletor">
+            
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Celsius para Fahrenheit
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                <label class="form-check-label" for="flexRadioDefault2">
+                  Fahrenheit para Celsius
+                </label>  
+            </div>
+        </div>
+        <div id="Entrada">
+            <input type="number" id="num">
+            <input type="button" value="Converter" id="botao" onclick="Converter()">
+
+            <p id="resultado"></p>
+        </div>
+    </main>
+
+    <script>
+        
+        function C_para_F_func(valor){
+            return ((valor * 1.8) + 32)
+        }
+
+        function F_para_C_func(valor){
+            return ((valor - 32) / 1.8)
+        }
+
+        var entrada = document.getElementById("num")
+        var C_para_F = document.getElementById("flexRadioDefault1")
+        var F_para_C = document.getElementById("flexRadioDefault2")
+        var saida = document.getElementById('resultado')
+
+        function Converter(){
+            if(C_para_F.checked == true){
+                var result = C_para_F_func(entrada.value).toFixed(2)
+                saida.innerHTML = `${entrada.value}C° é igual a ${result}F°`
+            }else if(F_para_C.checked == true){
+                var result = F_para_C_func(entrada.value).toFixed(2)
+                saida.innerHTML = `${entrada.value} F° é igual a ${result} C°`
+            }
+        }
+
+    </script>
+</body>
+</html>
